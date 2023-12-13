@@ -1,0 +1,6 @@
+package br.com.dcbsystem.beamshear
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
