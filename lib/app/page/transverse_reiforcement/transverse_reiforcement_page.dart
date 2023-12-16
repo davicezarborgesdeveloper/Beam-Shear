@@ -2,7 +2,8 @@ import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:beamshear/app/page/requesting%20_effort/widget/result_tile.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/text_result_tile.dart';
+import '../../core/common/drawer/custom_drawer.dart';
+import '../../core/common/text_result_tile.dart';
 import '../../core/styles/colors_app.dart';
 import '../../core/ui/helpers/enums.dart';
 import '../servicer_shear_force/servicer_shear_force_page.dart';
@@ -34,6 +35,7 @@ class _TransverseReiforcementPageState
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorsApp.i.primary),
       ),
+      drawer: const CustomDrawer(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorsApp.i.primaryLight,
         foregroundColor: ColorsApp.i.primaryDark,
@@ -59,9 +61,9 @@ class _TransverseReiforcementPageState
                   style: context.textStyles.textMedium.copyWith(fontSize: 16),
                 ),
               ),
-              TextResultTile(
+              const TextResultTile(
                 title: 'Asw min',
-                value: 50.5.toString(),
+                value: 50.5,
                 unitType: 'cm²/m',
               ),
               const Divider(
@@ -117,14 +119,14 @@ class _TransverseReiforcementPageState
               const SizedBox(
                 height: 8,
               ),
-              TextResultTile(
+              const TextResultTile(
                 title: 'Ase min',
-                value: 50.5.toString(),
+                value: 50.5,
                 unitType: 'cm²/m',
               ),
-              TextResultTile(
+              const TextResultTile(
                 title: 'S',
-                value: 50.5.toString(),
+                value: 50.5,
                 unitType: 'cm',
               ),
               const Divider(
@@ -145,9 +147,9 @@ class _TransverseReiforcementPageState
                 height: 8,
                 thickness: 1,
               ),
-              TextResultTile(
+              const TextResultTile(
                 title: 'Smax',
-                value: 50.5.toString(),
+                value: 50.5,
                 unitType: 'cm',
               ),
               const ResultTile(

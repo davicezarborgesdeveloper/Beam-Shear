@@ -1,7 +1,9 @@
 import 'package:beamshear/app/page/base/widget/button_tile.dart';
-import 'package:beamshear/app/page/transversal_section/transversal_section_data_page.dart';
 import 'package:beamshear/app/page/under_construction/under_construction_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../../controller/drawer_controller.dart';
 
 class ButtonSelection extends StatelessWidget {
   const ButtonSelection({super.key});
@@ -14,8 +16,7 @@ class ButtonSelection extends StatelessWidget {
           image: 'assets/images/T.png',
           title: 'T',
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => const TransversalSectionDataPage()));
+            GetIt.I<CustomDrawerController>().value.jumpToPage(1);
           },
         ),
         const SizedBox(

@@ -3,6 +3,7 @@ import 'package:beamshear/app/page/report/widget/report_check_tile.dart';
 import 'package:beamshear/app/page/report/widget/report_tile.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/common/drawer/custom_drawer.dart';
 import '../../core/styles/colors_app.dart';
 
 class ReportPage extends StatelessWidget {
@@ -23,6 +24,7 @@ class ReportPage extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorsApp.i.primary),
       ),
+      drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
@@ -33,33 +35,23 @@ class ReportPage extends StatelessWidget {
                 style: context.textStyles.textBold.copyWith(fontSize: 24),
               ),
               const SizedBox(height: 16),
-              ReportTile(text: 'Vskmax', value: 10, unit: 'KN'),
-              ReportTile(text: 'Vsd', value: 10, unit: 'KN'),
-              ReportTile(text: 'Vrd2', value: 10, unit: 'KN'),
-              ReportCheckTile(text: 'Vsd <= Vrd2'),
-              ReportTile(text: 'Aswmin', value: 10, unit: 'cm²/m'),
-              ReportTile(text: 'Ase', value: 10, unit: 'cm²/m'),
-              ReportTile(text: 'S', value: 10, unit: 'cm'),
-              ReportCheckTile(text: 'Vsd <= 0,67 * Vrd2'),
-              ReportTile(text: 'Smax', value: 10, unit: 'cm'),
-              ReportCheckTile(text: 'smax > S'),
-              ReportTile(text: 'Vrmin', value: 10, unit: 'KN'),
-              ReportCheckTile(text: 'Vrmin => Vskmax'),
-              ReportTile(text: 'N', value: 10, unit: 'estribos'),
-              ReportTile(text: 'Sp', value: 10, unit: 'cm'),
-              ReportTile(text: 'Ch', value: 10, unit: 'cm'),
-              ReportTile(text: 'Cv', value: 10, unit: 'cm'),
-              ReportTile(text: 'Ct', value: 10, unit: 'cm'),
-
-              // ReportTile(),
-              // ReportCheckTile(),
-              // ReportTile(),
-              // ReportCheckTile(),
-              // ReportTile(),
-              // ReportTile(),
-              // ReportTile(),
-              // ReportTile(),
-              // ReportTile(),
+              const ReportTile(text: 'Vskmax', value: 10, unit: 'KN'),
+              const ReportTile(text: 'Vsd', value: 10, unit: 'KN'),
+              const ReportTile(text: 'Vrd2', value: 10, unit: 'KN'),
+              const ReportCheckTile(text: 'Vsd <= Vrd2'),
+              const ReportTile(text: 'Aswmin', value: 10, unit: 'cm²/m'),
+              const ReportTile(text: 'Ase', value: 10, unit: 'cm²/m'),
+              const ReportTile(text: 'S', value: 10, unit: 'cm'),
+              const ReportCheckTile(text: 'Vsd <= 0,67 * Vrd2'),
+              const ReportTile(text: 'Smax', value: 10, unit: 'cm'),
+              const ReportCheckTile(text: 'smax > S'),
+              const ReportTile(text: 'Vrmin', value: 10, unit: 'KN'),
+              const ReportCheckTile(text: 'Vrmin => Vskmax'),
+              const ReportTile(text: 'N', value: 10, unit: 'estribos'),
+              const ReportTile(text: 'Sp', value: 10, unit: 'cm'),
+              const ReportTile(text: 'Ch', value: 10, unit: 'cm'),
+              const ReportTile(text: 'Cv', value: 10, unit: 'cm'),
+              const ReportTile(text: 'Ct', value: 10, unit: 'cm'),
             ],
           ),
         ),

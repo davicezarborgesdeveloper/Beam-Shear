@@ -1,78 +1,158 @@
-import 'package:beamshear/app/common/input_field.dart';
-import 'package:beamshear/app/core/styles/colors_app.dart';
-import 'package:beamshear/app/core/styles/text_styles.dart';
+import 'package:beamshear/app/controller/data_controller.dart';
+import 'package:beamshear/app/core/common/input_field.dart';
+import 'package:beamshear/app/core/ui/helpers/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
-import '../../common/top_title.dart';
-import '../weight_load_data/weight_load_data_page.dart';
+import '../../controller/drawer_controller.dart';
+import '../../core/common/bottom_page_navigator.dart';
+import '../../core/common/top_title.dart';
 
-class TransversalSectionDataPage extends StatelessWidget {
+class TransversalSectionDataPage extends StatefulWidget {
   const TransversalSectionDataPage({super.key});
 
   @override
+  State<TransversalSectionDataPage> createState() =>
+      _TransversalSectionDataPageState();
+}
+
+class _TransversalSectionDataPageState
+    extends State<TransversalSectionDataPage> {
+  final bfEC = TextEditingController();
+  final bwEC = TextEditingController();
+  final cEC = TextEditingController();
+  final dEC = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  var dataCalc = GetIt.I<DataController>();
+  int currentPage = GetIt.I<CustomDrawerController>().value.page!.round();
+
+  @override
+  void initState() {
+    bfEC.text = dataCalc.value!.bf != null ? dataCalc.value!.bf.toString() : '';
+    bwEC.text = dataCalc.value!.bw != null ? dataCalc.value!.bw.toString() : '';
+    cEC.text = dataCalc.value!.c != null ? dataCalc.value!.c.toString() : '';
+    dEC.text = dataCalc.value!.d != null ? dataCalc.value!.d.toString() : '';
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    bfEC.dispose();
+    bwEC.dispose();
+    cEC.dispose();
+    dEC.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey.shade400,
-        elevation: 4,
-        title: Text(
-          'Beam Shear',
-          style: context.textStyles.textRegular
-              .copyWith(fontSize: 28, color: ColorsApp.i.primary),
-        ),
-        centerTitle: true,
-        iconTheme: IconThemeData(color: ColorsApp.i.primary),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorsApp.i.primaryLight,
-        foregroundColor: ColorsApp.i.primaryDark,
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const WeightLoadDataPage()),
-          );
-        },
-        child: const Icon(Icons.arrow_forward, color: Colors.white),
-      ),
-      // drawer: const Drawer(),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          width: MediaQuery.sizeOf(context).width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 8,
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              width: MediaQuery.sizeOf(context).width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const TopTitle(
+                      title: 'Dados', subtitle: 'Seção Transversal', type: 'T'),
+                  SizedBox(
+                    height: 200,
+                    child: Image.asset('assets/images/t_bfw.png'),
+                  ),
+                  InputField(
+                    label: 'bf',
+                    suffix: const Text(Units.cm),
+                    controller: bfEC,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'o campo é obrigatório';
+                      } else if (double.parse(value) <= 0) {
+                        return 'o valor deve ser positivo';
+                      }
+                      return null;
+                    },
+                  ),
+                  InputField(
+                    label: 'bw',
+                    suffix: const Text(Units.cm),
+                    controller: bwEC,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'o campo é obrigatório';
+                      } else if (double.parse(value) <= 0) {
+                        return 'o valor deve ser positivo';
+                      }
+                      return null;
+                    },
+                  ),
+                  InputField(
+                    label: 'c',
+                    suffix: const Text(Units.cm),
+                    controller: cEC,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'o campo é obrigatório';
+                      } else if (double.parse(value) <= 0) {
+                        return 'o valor deve ser positivo';
+                      }
+                      return null;
+                    },
+                  ),
+                  InputField(
+                    label: 'd',
+                    suffix: const Text(Units.cm),
+                    controller: dEC,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'o campo é obrigatório';
+                      } else if (double.parse(value) <= 0) {
+                        return 'o valor deve ser positivo';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 64,
+                  ),
+                ],
               ),
-              const TopTitle(
-                  title: 'Dados', subtitle: 'Seção Transversal', type: 'T'),
-              SizedBox(
-                height: 200,
-                child: Image.asset('assets/images/t_bfw.png'),
-              ),
-              const InputField(
-                label: 'bf',
-                suffix: Text('cm'),
-              ),
-              const InputField(
-                label: 'bw',
-                suffix: Text('cm'),
-              ),
-              const InputField(
-                label: 'c',
-                suffix: Text('cm'),
-              ),
-              const InputField(
-                label: 'd',
-                suffix: Text('cm'),
-              ),
-              const SizedBox(
-                height: 64,
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: BottomPageNavigator(
+            onPressedBack: () {
+              GetIt.I<CustomDrawerController>()
+                  .value
+                  .jumpToPage(currentPage - 1);
+            },
+            onPressedForwad: () {
+              if (_formKey.currentState!.validate()) {
+                dataCalc.value = dataCalc.value!.copyWith(
+                  bf: double.parse(bfEC.text),
+                  bw: double.parse(bwEC.text),
+                  c: double.parse(cEC.text),
+                  d: double.parse(dEC.text),
+                );
+
+                GetIt.I<CustomDrawerController>()
+                    .value
+                    .jumpToPage(currentPage + 1);
+              }
+            },
+          ),
+        )
+      ],
     );
   }
 }

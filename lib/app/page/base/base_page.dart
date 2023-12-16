@@ -1,11 +1,32 @@
-import 'package:beamshear/app/common/drawer/custom_drawer.dart';
+import 'package:beamshear/app/core/common/drawer/custom_drawer.dart';
 import 'package:beamshear/app/core/styles/colors_app.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
-import 'package:beamshear/app/page/base/widget/button_selection.dart';
+import 'package:beamshear/app/page/section_type/section_type_page.dart';
+import 'package:beamshear/app/page/stirrup_angles/stirrup_angles_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
-class BasePage extends StatelessWidget {
+import '../../controller/drawer_controller.dart';
+import '../characteristics_materials/characteristics_materials_page.dart';
+import '../requesting _effort/requestin_effort_page.dart';
+import '../transversal_section/transversal_section_data_page.dart';
+import '../transverse_reiforcement/transverse_reiforcement_page.dart';
+import '../weight_load_data/weight_load_data_page.dart';
+
+class BasePage extends StatefulWidget {
   const BasePage({super.key});
+
+  @override
+  State<BasePage> createState() => _BasePageState();
+}
+
+class _BasePageState extends State<BasePage> {
+  CustomDrawerController pageController = GetIt.I<CustomDrawerController>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +44,22 @@ class BasePage extends StatelessWidget {
         iconTheme: IconThemeData(color: ColorsApp.i.primary),
       ),
       drawer: const CustomDrawer(),
-      body: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Text(
-                'Escolha o tipo de seção transversal',
-                style: context.textStyles.textBold
-                    .copyWith(fontSize: 20, color: Colors.grey.shade600),
-              ),
-            ),
-            const Expanded(child: ButtonSelection()),
-          ],
-        ),
+      body: PageView(
+        controller: pageController.value,
+        scrollDirection: Axis.horizontal,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          const SectionTypePage(),
+          const TransversalSectionDataPage(),
+          const WeightLoadDataPage(),
+          const CharacteristicsMaterialsPage(),
+          const StirrupAnglesPage(),
+          const RequestinEffortPage(),
+          const TransverseReiforcementPage(),
+          Container(color: Colors.green),
+          Container(color: Colors.yellow),
+          Container(color: Colors.orange),
+        ],
       ),
     );
   }

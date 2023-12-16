@@ -1,8 +1,17 @@
-import 'package:beamshear/app/common/input_field.dart';
+import 'package:beamshear/app/core/common/input_field.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/ui/helpers/constants.dart';
+import '../../../core/ui/helpers/enums.dart';
+
 class DistributedTile extends StatelessWidget {
-  const DistributedTile({super.key});
+  final List<TextEditingController> controllers;
+  final LoadType? type;
+  const DistributedTile({
+    this.type,
+    required this.controllers,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +21,35 @@ class DistributedTile extends StatelessWidget {
           height: 8,
         ),
         Image.asset('assets/images/distributed.png'),
-        const InputField(
+        InputField(
+          controller: controllers[0],
           label: 'q',
-          suffix: Text('KN/m'),
+          suffix: const Text(Units.knm),
+          validator: (value) {
+            if (type == LoadType.distributed) {
+              if (value.isEmpty) {
+                return 'o campo é obrigatório';
+              } else if (double.parse(value) <= 0) {
+                return 'o valor deve ser positivo';
+              }
+            }
+            return null;
+          },
         ),
-        const InputField(
+        InputField(
+          controller: controllers[1],
           label: 'L',
-          suffix: Text('m'),
+          suffix: const Text(Units.meters),
+          validator: (value) {
+            if (type == LoadType.distributed) {
+              if (value.isEmpty) {
+                return 'o campo é obrigatório';
+              } else if (double.parse(value) <= 0) {
+                return 'o valor deve ser positivo';
+              }
+            }
+            return null;
+          },
         ),
       ],
     );

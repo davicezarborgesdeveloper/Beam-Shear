@@ -1,11 +1,11 @@
 import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../core/styles/colors_app.dart';
+import '../styles/colors_app.dart';
 
 class TextResultTile extends StatelessWidget {
   final String title;
-  final String value;
+  final double value;
   final String unitType;
   const TextResultTile({
     required this.title,

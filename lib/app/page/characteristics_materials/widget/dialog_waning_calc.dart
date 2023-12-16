@@ -1,6 +1,5 @@
 import 'package:beamshear/app/core/styles/colors_app.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
-import 'package:beamshear/app/page/requesting%20_effort/requestin_effort_page.dart';
 import 'package:flutter/material.dart';
 
 class DialogWaningCalc extends StatelessWidget {
@@ -42,11 +41,6 @@ class DialogWaningCalc extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.pop(context);
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => const RequestinEffortPage(),
-              ),
-            );
           },
           child: Text(
             'OK',

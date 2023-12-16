@@ -1,7 +1,8 @@
 enum LoadType {
   distributed('Carga distribuida', 1),
   point('Carga pontual', 2),
-  triangular('Carga triangular', 3);
+  triangular('Carga triangular', 3),
+  cortante('Valor da cortante (v)', 4);
 
   final String name;
   final int value;
@@ -14,12 +15,12 @@ enum LoadType {
 }
 
 enum SteelType {
-  ca25('CA-25', 25),
-  ca50('CA-50', 50),
-  ca60('CA-60', 60);
+  ca25('CA-25', 250 / 1.15),
+  ca50('CA-50', 500 / 1.15),
+  ca60('CA-60', 600 / 1.15);
 
   final String name;
-  final int value;
+  final double value;
 
   const SteelType(this.name, this.value);
 

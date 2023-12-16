@@ -1,8 +1,9 @@
-import 'package:beamshear/app/common/text_result_tile.dart';
+import 'package:beamshear/app/core/common/text_result_tile.dart';
 import 'package:beamshear/app/core/styles/colors_app.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/common/drawer/custom_drawer.dart';
 import '../requesting _effort/widget/result_tile.dart';
 import '../stirrup_details/stirrup_details_page.dart';
 
@@ -24,6 +25,7 @@ class ServicerShearForcePage extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorsApp.i.primary),
       ),
+      drawer: const CustomDrawer(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorsApp.i.primaryLight,
         foregroundColor: ColorsApp.i.primaryDark,
@@ -49,9 +51,9 @@ class ServicerShearForcePage extends StatelessWidget {
                 style: context.textStyles.textMedium.copyWith(fontSize: 16),
               ),
             ),
-            TextResultTile(
+            const TextResultTile(
               title: 'Vrmin',
-              value: 50.5.toString(),
+              value: 50.5,
               unitType: 'KN',
             ),
             const ResultTile(
