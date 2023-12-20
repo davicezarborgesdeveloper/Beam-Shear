@@ -15,17 +15,13 @@ class TextStyles {
       TextStyle(fontWeight: FontWeight.normal, fontFamily: fontFamily);
   TextStyle get textMedium =>
       TextStyle(fontWeight: FontWeight.w500, fontFamily: fontFamily);
-  TextStyle get textSemiBold =>
-      TextStyle(fontWeight: FontWeight.w600, fontFamily: fontFamily);
   TextStyle get textBold =>
       TextStyle(fontWeight: FontWeight.bold, fontFamily: fontFamily);
-  TextStyle get textExtraBold =>
-      TextStyle(fontWeight: FontWeight.w800, fontFamily: fontFamily);
   TextStyle get textBlack =>
       TextStyle(fontWeight: FontWeight.w900, fontFamily: fontFamily);
 
   TextStyle get textButtonLabel => textBold.copyWith(fontSize: 14);
-  TextStyle get textTitle => textExtraBold.copyWith(fontSize: 22);
+  TextStyle get textTitle => textBlack.copyWith(fontSize: 22);
 }
 
 extension TextStylesExtensions on BuildContext {

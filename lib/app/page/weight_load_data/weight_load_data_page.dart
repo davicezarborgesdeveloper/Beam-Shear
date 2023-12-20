@@ -33,7 +33,8 @@ class _WeightLoadDataPageState extends State<WeightLoadDataPage> {
     qEC.text = dataCalc.value!.q != null ? dataCalc.value!.q.toString() : '';
     lEC.text = dataCalc.value!.l != null ? dataCalc.value!.l.toString() : '';
     xEC.text = dataCalc.value!.x != null ? dataCalc.value!.x.toString() : '';
-    vEC.text = dataCalc.value!.v != null ? dataCalc.value!.v.toString() : '';
+    vEC.text =
+        dataCalc.value!.vsk != null ? dataCalc.value!.vsk.toString() : '';
     super.initState();
   }
 
@@ -142,7 +143,7 @@ class _WeightLoadDataPageState extends State<WeightLoadDataPage> {
                   x: dropdownValue == LoadType.point
                       ? double.parse(xEC.text)
                       : null,
-                  v: dropdownValue == LoadType.cortante
+                  vsk: dropdownValue == LoadType.cortante
                       ? double.parse(vEC.text)
                       : null,
                   loadType: dropdownValue,

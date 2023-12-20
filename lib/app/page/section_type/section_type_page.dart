@@ -10,7 +10,6 @@ class SectionTypePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.sizeOf(context).width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -19,7 +18,7 @@ class SectionTypePage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8),
             child: Text(
               'Escolha o tipo de seção transversal',
-              style: context.textStyles.textSemiBold
+              style: context.textStyles.textBold
                   .copyWith(fontSize: 20, color: ColorsApp.i.primaryDark),
               textAlign: TextAlign.center,
             ),

@@ -6,10 +6,12 @@ import '../styles/colors_app.dart';
 class TextResultTile extends StatelessWidget {
   final String title;
   final double value;
+  final int? decimal;
   final String unitType;
   const TextResultTile({
     required this.title,
     required this.value,
+    this.decimal,
     required this.unitType,
     super.key,
   });
@@ -22,11 +24,13 @@ class TextResultTile extends StatelessWidget {
       children: [
         Text(
           '$title:',
-          style: context.textStyles.textSemiBold.copyWith(fontSize: 16),
+          style: context.textStyles.textBold.copyWith(fontSize: 16),
         ),
         RichText(
           text: TextSpan(
-              text: '$value ',
+              text: decimal != null
+                  ? '${value.toStringAsFixed(decimal!)} '
+                  : '$value ',
               style: context.textStyles.textRegular
                   .copyWith(fontSize: 20, color: ColorsApp.i.primary),
               children: [

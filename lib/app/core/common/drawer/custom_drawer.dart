@@ -38,7 +38,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           ListTile(
-            title: const Text('Dados - Carga(q)'),
+            title: const Text('Dados - Carga(Q) ou Cortante(Vsk)'),
             onTap: () {
               changePage(2);
             },
@@ -50,13 +50,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           ListTile(
-            title: const Text('Esforços Solicitantes'),
+            title: const Text('Ângulo da biela de compressão'),
             onTap: () {
               changePage(4);
             },
           ),
           ListTile(
-            title: const Text('Armadura transversal'),
+            title: const Text('Esforços Solicitantes'),
             onTap: () {
               changePage(5);
             },
@@ -68,15 +68,21 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           ListTile(
-            title: const Text('Detalhamento dos estribos'),
+            title: const Text('Armadura de cálculo'),
             onTap: () {
               changePage(7);
             },
           ),
           ListTile(
-            title: const Text('Relatório'),
+            title: const Text('Comprimento dos estribos'),
             onTap: () {
               changePage(8);
+            },
+          ),
+          ListTile(
+            title: const Text('Relatório'),
+            onTap: () {
+              changePage(9);
             },
           ),
         ],

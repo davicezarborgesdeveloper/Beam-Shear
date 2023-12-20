@@ -13,8 +13,8 @@ class ButtonSelection extends StatelessWidget {
     return Column(
       children: [
         ButtonTile(
-          image: 'assets/images/T.png',
-          title: 'T',
+          image: 'assets/images/square.png',
+          title: 'Retangular',
           onTap: () {
             GetIt.I<CustomDrawerController>().value.jumpToPage(1);
           },
@@ -23,8 +23,8 @@ class ButtonSelection extends StatelessWidget {
           height: 48,
         ),
         ButtonTile(
-          image: 'assets/images/square.png',
-          title: 'Retangular',
+          image: 'assets/images/T.png',
+          title: 'T',
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => const UnderConstructionPage()));

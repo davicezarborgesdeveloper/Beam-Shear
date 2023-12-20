@@ -27,10 +27,6 @@ class ReportCheckTile extends StatelessWidget {
               )
             ],
           ),
-          const Divider(
-            height: 16,
-            thickness: 1,
-          ),
         ],
       ),
     );

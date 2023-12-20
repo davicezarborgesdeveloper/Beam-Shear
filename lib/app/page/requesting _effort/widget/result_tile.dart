@@ -7,17 +7,20 @@ class ResultTile extends StatelessWidget {
   final String textDenied;
   final String? standardPhrase;
   final String? approvedPhrase;
+  final String? text;
   final bool approved;
   const ResultTile(
       {required this.textApproved,
       required this.textDenied,
       this.standardPhrase,
       this.approvedPhrase,
+      this.text,
       required this.approved,
       super.key});
 
   @override
   Widget build(BuildContext context) {
+    String phrase = approved ? approvedPhrase ?? '' : standardPhrase ?? '';
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Center(
@@ -40,20 +43,27 @@ class ResultTile extends StatelessWidget {
                         approved ? ColorsApp.i.primary : Colors.grey.shade600),
               ),
             ),
-            Text(
-              approved ? 'APROVADO' : 'NEGADO',
-              style: context.textStyles.textMedium.copyWith(
-                  fontSize: 24,
-                  color: approved ? ColorsApp.i.primary : Colors.grey.shade600),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Text(approved ? approvedPhrase ?? '' : standardPhrase ?? '',
-                style: context.textStyles.textRegular.copyWith(
-                    fontSize: 12,
+            if (text != null && text!.isEmpty)
+              Container()
+            else
+              Text(
+                text == null ? (approved ? 'APROVADO' : 'NEGADO') : text!,
+                style: context.textStyles.textMedium.copyWith(
+                    fontSize: 24,
                     color:
-                        approved ? ColorsApp.i.primary : Colors.grey.shade600))
+                        approved ? ColorsApp.i.primary : Colors.grey.shade600),
+              ),
+            if (phrase.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: Text(
+                    approved ? approvedPhrase ?? '' : standardPhrase ?? '',
+                    style: context.textStyles.textRegular.copyWith(
+                        fontSize: 12,
+                        color: approved
+                            ? ColorsApp.i.primary
+                            : Colors.grey.shade600)),
+              )
           ],
         ),
       ),

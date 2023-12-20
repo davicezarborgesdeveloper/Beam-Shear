@@ -1,7 +1,6 @@
 import 'package:beamshear/app/controller/data_controller.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:beamshear/app/core/ui/helpers/constants.dart';
-import 'package:beamshear/app/page/characteristics_materials/widget/dialog_waning_calc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -147,11 +146,7 @@ class _CharacteristicsMaterialsPageState
                   steel: dropdownValue,
                   fck: double.parse(fckEC.text),
                 );
-                await showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (_) => const DialogWaningCalc(),
-                );
+
                 GetIt.I<CustomDrawerController>()
                     .value
                     .jumpToPage(currentPage + 1);

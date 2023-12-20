@@ -1,127 +1,97 @@
-import 'package:beamshear/app/core/common/drawer/custom_drawer.dart';
-import 'package:beamshear/app/core/styles/colors_app.dart';
+import 'package:beamshear/app/controller/drawer_controller.dart';
+import 'package:beamshear/app/core/common/bottom_page_navigator.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
-import 'package:beamshear/app/page/report/report_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
+import '../../controller/data_controller.dart';
 import '../../core/common/text_result_tile.dart';
+import '../../core/ui/helpers/calculation_functions.dart';
 
-class StirrupDetailsPage extends StatelessWidget {
+class StirrupDetailsPage extends StatefulWidget {
   const StirrupDetailsPage({super.key});
 
   @override
+  State<StirrupDetailsPage> createState() => _StirrupDetailsPageState();
+}
+
+class _StirrupDetailsPageState extends State<StirrupDetailsPage> {
+  int currentPage = GetIt.I<CustomDrawerController>().value.page!.round();
+  var dataCalc = GetIt.I<DataController>();
+  final CalculationFunctions calc = CalculationFunctions();
+
+  @override
+  void initState() {
+    if (dataCalc.value!.h != null &&
+        dataCalc.value!.bw != null &&
+        dataCalc.value!.c != null &&
+        dataCalc.value!.d != null) {
+      var ch = calc.horizontalLength(dataCalc.value!.bw!, dataCalc.value!.c!,
+          dataCalc.value!.diameter!.value);
+      var cv = calc.verticalLength(dataCalc.value!.h!, dataCalc.value!.c!,
+          dataCalc.value!.diameter!.value);
+      dataCalc.value = dataCalc.value!
+          .copyWith(ch: ch, cv: cv, ct: calc.totalLength(ch, cv));
+    }
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade300,
-      appBar: AppBar(
-        backgroundColor: Colors.grey.shade400,
-        elevation: 4,
-        title: Text(
-          'Beam Shear',
-          style: context.textStyles.textRegular
-              .copyWith(fontSize: 28, color: ColorsApp.i.primary),
-        ),
-        centerTitle: true,
-        iconTheme: IconThemeData(color: ColorsApp.i.primary),
-      ),
-      drawer: const CustomDrawer(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorsApp.i.primaryLight,
-        foregroundColor: ColorsApp.i.primaryDark,
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => const ReportPage()));
-        },
-        child: const Icon(Icons.arrow_forward, color: Colors.white),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  'Detalhamento de estribos',
-                  style: context.textStyles.textSemiBold.copyWith(fontSize: 20),
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    'Comprimento dos estribos',
+                    style: context.textStyles.textBold.copyWith(fontSize: 16),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  'Número total de estribos',
-                  style: context.textStyles.textMedium.copyWith(fontSize: 16),
+                TextResultTile(
+                  title: 'Comprimento horizontal',
+                  value: dataCalc.value!.ch ?? 0.0,
+                  decimal: 2,
+                  unitType: 'cm',
                 ),
-              ),
-              const TextResultTile(
-                title: 'N',
-                value: 50.5,
-                unitType: 'estribos',
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  '* Maior precisão do espaçamento',
-                  style: context.textStyles.textMedium.copyWith(fontSize: 16),
+                TextResultTile(
+                  title: 'Comprimento vertical',
+                  value: dataCalc.value!.cv ?? 0.0,
+                  decimal: 2,
+                  unitType: 'cm',
                 ),
-              ),
-              const TextResultTile(
-                title: 'Sp',
-                value: 50.5,
-                unitType: 'Cm',
-              ),
-              const Divider(
-                height: 24,
-                thickness: 1,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  'Comprimento dos estribos',
-                  style: context.textStyles.textMedium.copyWith(fontSize: 20),
+                TextResultTile(
+                  title: 'Comprimento total',
+                  value: dataCalc.value!.ct ?? 0.0,
+                  decimal: 2,
+                  unitType: 'cm',
                 ),
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(vertical: 8),
-              //   child: Text(
-              //     'Comprimento horizontal',
-              //     style: context.textStyles.textMedium.copyWith(fontSize: 16),
-              //   ),
-              // ),
-              const TextResultTile(
-                title: 'Comprimento horizontal',
-                value: 50.5,
-                unitType: 'Cm',
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(vertical: 8),
-              //   child: Text(
-              //     'Comprimento vertical',
-              //     style: context.textStyles.textMedium.copyWith(fontSize: 16),
-              //   ),
-              // ),
-              const TextResultTile(
-                title: 'Comprimento vertical',
-                value: 50.5,
-                unitType: 'Cm',
-              ),
-              // Padding(
-              // padding: const EdgeInsets.symmetric(vertical: 8),
-              // child: Text(
-              // 'Comprimento total do estribo',
-              // style: context.textStyles.textMedium.copyWith(fontSize: 16),
-              // ),
-              // ),
-              const TextResultTile(
-                title: 'Comprimento total',
-                value: 50.5,
-                unitType: 'Cm',
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: BottomPageNavigator(
+            onPressedBack: () {
+              GetIt.I<CustomDrawerController>()
+                  .value
+                  .jumpToPage(currentPage - 1);
+            },
+            onPressedForwad: () async {
+              GetIt.I<CustomDrawerController>()
+                  .value
+                  .jumpToPage(currentPage + 1);
+            },
+          ),
+        )
+      ],
     );
   }
 }

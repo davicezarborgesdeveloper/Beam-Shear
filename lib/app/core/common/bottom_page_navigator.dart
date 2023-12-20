@@ -6,7 +6,7 @@ class BottomPageNavigator extends StatelessWidget {
   final VoidCallback? onPressedForwad;
   const BottomPageNavigator({
     required this.onPressedBack,
-    required this.onPressedForwad,
+    this.onPressedForwad,
     super.key,
   });
   @override
@@ -20,10 +20,11 @@ class BottomPageNavigator extends StatelessWidget {
             icon: Icons.arrow_back,
             onPressed: onPressedBack,
           ),
-          FrontBackButton(
-            icon: Icons.arrow_forward,
-            onPressed: onPressedForwad,
-          ),
+          if (onPressedForwad != null)
+            FrontBackButton(
+              icon: Icons.arrow_forward,
+              onPressed: onPressedForwad,
+            ),
         ],
       ),
     );

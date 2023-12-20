@@ -1,3 +1,4 @@
+import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -46,7 +47,8 @@ class _StirrupAnglesPageState extends State<StirrupAnglesPage> {
                 children: [
                   const SizedBox(height: 16),
                   const TopTitle(
-                      title: 'Dados', subtitle: 'Ângulo dos estribos'),
+                      title: 'Dados',
+                      subtitle: 'Ângulo da biela de compressão'),
                   const SizedBox(height: 16),
                   InputField(
                     label: 'Ângulo',
@@ -61,6 +63,34 @@ class _StirrupAnglesPageState extends State<StirrupAnglesPage> {
                       }
                       return null;
                     },
+                  ),
+                  const SizedBox(height: 32),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Aviso',
+                                style: context.textStyles.textRegular,
+                              ),
+                              const Icon(
+                                Icons.warning,
+                                color: Colors.amber,
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'Utilizando o modelo de cálculo II',
+                            style: context.textStyles.textRegular,
+                          ),
+                          Text(
+                            'O modelo II admite diagonais de compressão inclinadas de θ em relação ao eixo longitudinal do elemento estrutural, com θ variável entre 30° e 45°. Admite ainda que a parcela complementar de Vc sofra redução com o aumento de Vsd',
+                            style: context.textStyles.textRegular,
+                          ),
+                        ]),
                   ),
                 ],
               ),
@@ -80,6 +110,7 @@ class _StirrupAnglesPageState extends State<StirrupAnglesPage> {
                 dataCalc.value = dataCalc.value!.copyWith(
                   stirrupAngle: double.parse(angleEC.text),
                 );
+                FocusScope.of(context).unfocus();
                 GetIt.I<CustomDrawerController>()
                     .value
                     .jumpToPage(currentPage + 1);

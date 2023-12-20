@@ -7,8 +7,13 @@ class ReportTile extends StatelessWidget {
   final String text;
   final double value;
   final String unit;
+  final int? decimal;
   const ReportTile(
-      {required this.text, required this.value, required this.unit, super.key});
+      {required this.text,
+      required this.value,
+      required this.unit,
+      this.decimal,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class ReportTile extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(
-            '$value',
+            decimal == null ? '$value' : value.toStringAsFixed(decimal!),
             style: context.textStyles.textRegular
                 .copyWith(fontSize: 16, color: ColorsApp.i.primary),
           ),

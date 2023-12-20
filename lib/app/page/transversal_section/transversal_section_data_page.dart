@@ -18,7 +18,7 @@ class TransversalSectionDataPage extends StatefulWidget {
 
 class _TransversalSectionDataPageState
     extends State<TransversalSectionDataPage> {
-  final bfEC = TextEditingController();
+  final hEC = TextEditingController();
   final bwEC = TextEditingController();
   final cEC = TextEditingController();
   final dEC = TextEditingController();
@@ -29,7 +29,7 @@ class _TransversalSectionDataPageState
 
   @override
   void initState() {
-    bfEC.text = dataCalc.value!.bf != null ? dataCalc.value!.bf.toString() : '';
+    hEC.text = dataCalc.value!.h != null ? dataCalc.value!.h.toString() : '';
     bwEC.text = dataCalc.value!.bw != null ? dataCalc.value!.bw.toString() : '';
     cEC.text = dataCalc.value!.c != null ? dataCalc.value!.c.toString() : '';
     dEC.text = dataCalc.value!.d != null ? dataCalc.value!.d.toString() : '';
@@ -39,7 +39,7 @@ class _TransversalSectionDataPageState
 
   @override
   void dispose() {
-    bfEC.dispose();
+    // hEC.dispose();
     bwEC.dispose();
     cEC.dispose();
     dEC.dispose();
@@ -63,15 +63,15 @@ class _TransversalSectionDataPageState
                     height: 8,
                   ),
                   const TopTitle(
-                      title: 'Dados', subtitle: 'Seção Transversal', type: 'T'),
+                      title: 'Dados', subtitle: 'Seção Transversal', type: 'H'),
                   SizedBox(
                     height: 200,
-                    child: Image.asset('assets/images/t_bfw.png'),
+                    child: Image.asset('assets/images/square.png'),
                   ),
                   InputField(
-                    label: 'bf',
-                    suffix: const Text(Units.cm),
-                    controller: bfEC,
+                    label: 'h',
+                    suffix: const Text(Units.meters),
+                    controller: hEC,
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';
@@ -83,7 +83,7 @@ class _TransversalSectionDataPageState
                   ),
                   InputField(
                     label: 'bw',
-                    suffix: const Text(Units.cm),
+                    suffix: const Text(Units.meters),
                     controller: bwEC,
                     validator: (value) {
                       if (value.isEmpty) {
@@ -109,7 +109,7 @@ class _TransversalSectionDataPageState
                   ),
                   InputField(
                     label: 'd',
-                    suffix: const Text(Units.cm),
+                    suffix: const Text(Units.meters),
                     controller: dEC,
                     validator: (value) {
                       if (value.isEmpty) {
@@ -139,7 +139,7 @@ class _TransversalSectionDataPageState
             onPressedForwad: () {
               if (_formKey.currentState!.validate()) {
                 dataCalc.value = dataCalc.value!.copyWith(
-                  bf: double.parse(bfEC.text),
+                  // bf: double.parse(bfEC.text),
                   bw: double.parse(bwEC.text),
                   c: double.parse(cEC.text),
                   d: double.parse(dEC.text),

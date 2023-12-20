@@ -17,7 +17,7 @@ class CuttingValuePage extends StatelessWidget {
           height: 8,
         ),
         InputField(
-          label: 'v',
+          label: 'Vsk',
           suffix: const Text(Units.knewton),
           controller: controller,
           validator: (value) {
