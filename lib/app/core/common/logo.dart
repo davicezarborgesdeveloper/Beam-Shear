@@ -13,16 +13,16 @@ class Logo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Fidelix',
+              'Fidelix,A B'.toUpperCase(),
               style: context.textStyles.textBlack.copyWith(color: Colors.black),
             ),
             Text(
-              ' & ',
+              ' ; ',
               style: context.textStyles.textBlack
                   .copyWith(color: ColorsApp.i.primaryLight, fontSize: 18),
             ),
             Text(
-              'Cavalcante',
+              'Cavalcante,I J'.toUpperCase(),
               style: context.textStyles.textBlack.copyWith(color: Colors.black),
             )
           ],

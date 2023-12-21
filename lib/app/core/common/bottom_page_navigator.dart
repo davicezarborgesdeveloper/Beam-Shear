@@ -1,6 +1,8 @@
 import 'package:beamshear/app/core/common/front_back_button.dart';
 import 'package:flutter/material.dart';
 
+import 'logo.dart';
+
 class BottomPageNavigator extends StatelessWidget {
   final VoidCallback? onPressedBack;
   final VoidCallback? onPressedForwad;
@@ -11,20 +13,27 @@ class BottomPageNavigator extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 0, 8, 16),
+    return Container(
+      height: 60,
+      color: Colors.grey.shade200,
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           FrontBackButton(
             icon: Icons.arrow_back,
             onPressed: onPressedBack,
           ),
-          if (onPressedForwad != null)
-            FrontBackButton(
-              icon: Icons.arrow_forward,
-              onPressed: onPressedForwad,
-            ),
+          const Logo(),
+          onPressedForwad != null
+              ? FrontBackButton(
+                  icon: Icons.arrow_forward,
+                  onPressed: onPressedForwad,
+                )
+              : Container(
+                  width: 50,
+                ),
         ],
       ),
     );

@@ -45,7 +45,7 @@ class _ServicerShearForcePageState extends State<ServicerShearForcePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
-                  'Força cortante de serviço',
+                  'Força cortante de serviço no concreto',
                   style: context.textStyles.textBold.copyWith(fontSize: 16),
                 ),
               ),
@@ -66,6 +66,13 @@ class _ServicerShearForcePageState extends State<ServicerShearForcePage> {
                 ),
               ),
               const Divider(thickness: 1),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text(
+                  'Força cortante de serviço no aço',
+                  style: context.textStyles.textBold.copyWith(fontSize: 16),
+                ),
+              ),
               TextResultTile(
                 title: 'Vsw',
                 value: dataCalc.value!.vsw!,
@@ -82,14 +89,6 @@ class _ServicerShearForcePageState extends State<ServicerShearForcePage> {
                   ),
                 ),
               ),
-              // const ResultTile(
-              //   textApproved: 'Vsw ≥ Vskmax',
-              //   textDenied: 'Vsw < Vsrmax',
-              //   standardPhrase: 'Frase Norma',
-              //   approvedPhrase:
-              //       'A área mínima pode ser adotada em toda a viga.',
-              //   approved: true,
-              // ),
             ],
           ),
         )),

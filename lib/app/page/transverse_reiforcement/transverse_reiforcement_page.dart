@@ -29,6 +29,7 @@ class _TransverseReiforcementPageState
 
   @override
   void initState() {
+    dropdownValue = dataCalc.value!.diameter;
     dataCalc.value = dataCalc.value!.copyWith(
         asw90: calc.calcAsw90(dataCalc.value!.vsw!, dataCalc.value!.d!,
             dataCalc.value!.steel!.value, dataCalc.value!.stirrupAngle!),

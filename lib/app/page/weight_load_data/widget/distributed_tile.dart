@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/ui/helpers/constants.dart';
 import '../../../core/ui/helpers/enums.dart';
+import '../../../core/ui/helpers/parses.dart';
 
 class DistributedTile extends StatelessWidget {
   final List<TextEditingController> controllers;
@@ -29,7 +30,7 @@ class DistributedTile extends StatelessWidget {
             if (type == LoadType.distributed) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
@@ -44,12 +45,15 @@ class DistributedTile extends StatelessWidget {
             if (type == LoadType.distributed) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
             return null;
           },
+        ),
+        const SizedBox(
+          height: 64,
         ),
       ],
     );

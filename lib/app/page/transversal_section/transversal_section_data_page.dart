@@ -6,7 +6,9 @@ import 'package:get_it/get_it.dart';
 
 import '../../controller/drawer_controller.dart';
 import '../../core/common/bottom_page_navigator.dart';
+import '../../core/common/logo.dart';
 import '../../core/common/top_title.dart';
+import '../../core/ui/helpers/parses.dart';
 
 class TransversalSectionDataPage extends StatefulWidget {
   const TransversalSectionDataPage({super.key});
@@ -39,7 +41,7 @@ class _TransversalSectionDataPageState
 
   @override
   void dispose() {
-    // hEC.dispose();
+    hEC.dispose();
     bwEC.dispose();
     cEC.dispose();
     dEC.dispose();
@@ -75,7 +77,7 @@ class _TransversalSectionDataPageState
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';
-                      } else if (double.parse(value) <= 0) {
+                      } else if (doubleParse(value) <= 0) {
                         return 'o valor deve ser positivo';
                       }
                       return null;
@@ -88,7 +90,7 @@ class _TransversalSectionDataPageState
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';
-                      } else if (double.parse(value) <= 0) {
+                      } else if (doubleParse(value) <= 0) {
                         return 'o valor deve ser positivo';
                       }
                       return null;
@@ -101,7 +103,7 @@ class _TransversalSectionDataPageState
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';
-                      } else if (double.parse(value) <= 0) {
+                      } else if (doubleParse(value) <= 0) {
                         return 'o valor deve ser positivo';
                       }
                       return null;
@@ -114,14 +116,14 @@ class _TransversalSectionDataPageState
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';
-                      } else if (double.parse(value) <= 0) {
+                      } else if (doubleParse(value) <= 0) {
                         return 'o valor deve ser positivo';
                       }
                       return null;
                     },
                   ),
                   const SizedBox(
-                    height: 64,
+                    height: 72,
                   ),
                 ],
               ),
@@ -139,10 +141,10 @@ class _TransversalSectionDataPageState
             onPressedForwad: () {
               if (_formKey.currentState!.validate()) {
                 dataCalc.value = dataCalc.value!.copyWith(
-                  // bf: double.parse(bfEC.text),
-                  bw: double.parse(bwEC.text),
-                  c: double.parse(cEC.text),
-                  d: double.parse(dEC.text),
+                  h: doubleParse(bwEC.text),
+                  bw: doubleParse(bwEC.text),
+                  c: doubleParse(cEC.text),
+                  d: doubleParse(dEC.text),
                 );
 
                 GetIt.I<CustomDrawerController>()

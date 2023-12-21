@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/common/input_field.dart';
 import '../../../core/ui/helpers/constants.dart';
 import '../../../core/ui/helpers/enums.dart';
+import '../../../core/ui/helpers/parses.dart';
 
 class PointTile extends StatelessWidget {
   final List<TextEditingController> controllers;
@@ -25,7 +26,7 @@ class PointTile extends StatelessWidget {
             if (type == LoadType.point) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
@@ -40,7 +41,7 @@ class PointTile extends StatelessWidget {
             if (type == LoadType.point) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
@@ -55,7 +56,7 @@ class PointTile extends StatelessWidget {
             if (type == LoadType.point) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
@@ -63,7 +64,7 @@ class PointTile extends StatelessWidget {
           },
         ),
         const SizedBox(
-          height: 32,
+          height: 64,
         ),
       ],
     );

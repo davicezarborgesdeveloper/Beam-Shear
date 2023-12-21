@@ -84,7 +84,7 @@ class _RequestinEffortPageState extends State<RequestinEffortPage> {
                   height: 32,
                 ),
                 const Text(
-                    '* De acordo com a NBR6118/2023 o esforço solicitante de calculo é 40% maior que o esforço solicitante caracteristico.'),
+                    '* De acordo com a NBR 6118/2023 o esforço solicitante de calculo é 40% maior que o esforço solicitante caracteristico.'),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   child: Divider(),
@@ -122,9 +122,11 @@ class _RequestinEffortPageState extends State<RequestinEffortPage> {
                   .jumpToPage(currentPage - 1);
             },
             onPressedForwad: () async {
-              GetIt.I<CustomDrawerController>()
-                  .value
-                  .jumpToPage(currentPage + 1);
+              if (dataCalc.value!.vsd! <= dataCalc.value!.vrd2!) {
+                GetIt.I<CustomDrawerController>()
+                    .value
+                    .jumpToPage(currentPage + 1);
+              }
             },
           ),
         )

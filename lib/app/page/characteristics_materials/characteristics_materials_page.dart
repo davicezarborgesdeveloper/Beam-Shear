@@ -9,6 +9,7 @@ import '../../core/common/bottom_page_navigator.dart';
 import '../../core/common/input_field.dart';
 import '../../core/common/top_title.dart';
 import '../../core/ui/helpers/enums.dart';
+import '../../core/ui/helpers/parses.dart';
 
 class CharacteristicsMaterialsPage extends StatefulWidget {
   const CharacteristicsMaterialsPage({super.key});
@@ -28,6 +29,7 @@ class _CharacteristicsMaterialsPageState
 
   @override
   void initState() {
+    dropdownValue = dataCalc.value!.steel;
     fckEC.text =
         dataCalc.value!.fck != null ? dataCalc.value!.fck.toString() : '';
     super.initState();
@@ -121,7 +123,7 @@ class _CharacteristicsMaterialsPageState
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';
-                      } else if (double.parse(value) <= 0) {
+                      } else if (doubleParse(value) <= 0) {
                         return 'o valor deve ser positivo';
                       }
                       return null;
@@ -144,7 +146,7 @@ class _CharacteristicsMaterialsPageState
               if (_formKey.currentState!.validate()) {
                 dataCalc.value = dataCalc.value!.copyWith(
                   steel: dropdownValue,
-                  fck: double.parse(fckEC.text),
+                  fck: doubleParse(fckEC.text),
                 );
 
                 GetIt.I<CustomDrawerController>()

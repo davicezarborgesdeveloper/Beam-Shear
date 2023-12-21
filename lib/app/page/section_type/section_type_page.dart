@@ -2,6 +2,7 @@ import 'package:beamshear/app/core/styles/colors_app.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/common/logo.dart';
 import '../base/widget/button_selection.dart';
 
 class SectionTypePage extends StatelessWidget {
@@ -15,7 +16,7 @@ class SectionTypePage extends StatelessWidget {
         children: [
           Container(
             width: MediaQuery.sizeOf(context).width * .8,
-            padding: const EdgeInsets.only(top: 8),
+            padding: const EdgeInsets.only(top: 16),
             child: Text(
               'Escolha o tipo de seção transversal',
               style: context.textStyles.textBold
@@ -26,6 +27,10 @@ class SectionTypePage extends StatelessWidget {
           const Spacer(),
           const ButtonSelection(),
           const Spacer(),
+          Container(
+            color: Colors.grey.shade200,
+            child: const Logo(),
+          ),
         ],
       ),
     );

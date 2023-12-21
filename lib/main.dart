@@ -19,6 +19,5 @@ void main() async {
 Future<void> setupLocators() async {
   GetIt.I.registerSingleton(
       CustomDrawerController(PageController(initialPage: 0)));
-  // GetIt.I.registerSingleton(DataController(DataCalc.mock()));
   GetIt.I.registerSingleton(DataController(DataCalc()));
 }

@@ -36,17 +36,17 @@ class _ReportPageState extends State<ReportPage> {
                 const SizedBox(height: 16),
                 ReportTile(
                     text: 'Vskmax',
-                    value: dataCalc.value!.vsk!,
+                    value: dataCalc.value!.vsk ?? 0.0,
                     decimal: 3,
                     unit: Units.knewton),
                 ReportTile(
                     text: 'Vsd',
-                    value: dataCalc.value!.vsd!,
+                    value: dataCalc.value!.vsd ?? 0.0,
                     decimal: 3,
                     unit: Units.knewton),
                 ReportTile(
                     text: 'Vrd2',
-                    value: dataCalc.value!.vrd2!,
+                    value: dataCalc.value!.vrd2 ?? 0.0,
                     decimal: 3,
                     unit: Units.knewton),
                 const ReportCheckTile(text: 'Vsd <= Vrd2'),
@@ -54,40 +54,52 @@ class _ReportPageState extends State<ReportPage> {
                   height: 16,
                   thickness: 1,
                 ),
-                ReportTile(text: 'Vc', value: dataCalc.value!.vc!, unit: 'kN'),
                 ReportTile(
-                    text: 'Vsw', value: dataCalc.value!.vsw!, unit: 'kN'),
+                  text: 'Vc',
+                  value: dataCalc.value!.vc ?? 0.0,
+                  unit: 'kN',
+                  decimal: 3,
+                ),
+                ReportTile(
+                  text: 'Vsw',
+                  value: dataCalc.value!.vsw ?? 0.0,
+                  unit: 'kN',
+                  decimal: 3,
+                ),
                 const Divider(
                   height: 16,
                   thickness: 1,
                 ),
                 ReportTile(
                     text: 'Asw90',
-                    value: dataCalc.value!.asw90!,
+                    value: dataCalc.value!.asw90 ?? 0.0,
                     decimal: 3,
                     unit: 'cm²/m'),
                 ReportTile(
                     text: 'Aswmin',
-                    value: dataCalc.value!.aswmin!,
+                    value: dataCalc.value!.aswmin ?? 0.0,
                     decimal: 3,
                     unit: 'cm²/m'),
-                ReportCheckTile(
-                    text: dataCalc.value!.asw90! > dataCalc.value!.aswmin!
-                        ? 'Asw90'
-                        : (dataCalc.value!.asw90! < dataCalc.value!.aswmin!)
-                            ? 'Aswmin'
-                            : 'Asw90'),
+                if (dataCalc.value!.asw90 != null &&
+                    dataCalc.value!.aswmin != null)
+                  ReportCheckTile(
+                      text: dataCalc.value!.asw90! > dataCalc.value!.aswmin!
+                          ? 'Asw90'
+                          : (dataCalc.value!.asw90! < dataCalc.value!.aswmin!)
+                              ? 'Aswmin'
+                              : 'Asw90'),
                 const Divider(
                   height: 16,
                   thickness: 1,
                 ),
-                ReportCheckTile(
-                    text: dataCalc.value!.vsd! <= 0.67 * dataCalc.value!.vrd2!
-                        ? 'Vsd ≤ 0.67 * Vdr2'
-                        : 'Vsd > 0.67 * Vdr2'),
+                if (dataCalc.value!.vsd != null && dataCalc.value!.vrd2 != null)
+                  ReportCheckTile(
+                      text: dataCalc.value!.vsd! <= 0.67 * dataCalc.value!.vrd2!
+                          ? 'Vsd ≤ 0.67 * Vdr2'
+                          : 'Vsd > 0.67 * Vdr2'),
                 ReportTile(
                   text: 'Smax',
-                  value: dataCalc.value!.smax!,
+                  value: dataCalc.value!.smax ?? 0,
                   unit: 'cm',
                   decimal: 1,
                 ),
@@ -97,12 +109,12 @@ class _ReportPageState extends State<ReportPage> {
                 ),
                 ReportTile(
                     text: 'Diâmetro do estribo',
-                    value: dataCalc.value!.diameter!.value,
+                    value: dataCalc.value!.diameter?.value ?? 0.0,
                     decimal: 2,
                     unit: 'cm'),
                 ReportTile(
                     text: 'N° Barras',
-                    value: dataCalc.value!.nbars!,
+                    value: dataCalc.value?.nbars ?? 0,
                     decimal: 0,
                     unit: 'un'),
                 const Divider(
@@ -111,30 +123,32 @@ class _ReportPageState extends State<ReportPage> {
                 ),
                 ReportTile(
                     text: 'Espaçamento',
-                    value: dataCalc.value!.spacing!,
+                    value: dataCalc.value?.spacing ?? 0.0,
                     decimal: 2,
                     unit: 'cm'),
-                ReportCheckTile(
-                    text: dataCalc.value!.spacing! < dataCalc.value!.smax!
-                        ? 'S < Smax'
-                        : 'S > Smax'),
+                if (dataCalc.value!.spacing != null &&
+                    dataCalc.value!.smax != null)
+                  ReportCheckTile(
+                      text: dataCalc.value!.spacing! < dataCalc.value!.smax!
+                          ? 'S < Smax'
+                          : 'S > Smax'),
                 const Divider(
                   height: 16,
                   thickness: 1,
                 ),
                 ReportTile(
                     text: 'Comprimento Horizontal',
-                    value: dataCalc.value!.ch!,
+                    value: dataCalc.value!.ch ?? 0.0,
                     decimal: 2,
                     unit: 'cm'),
                 ReportTile(
                     text: 'Comprimento Vertical',
-                    value: dataCalc.value!.cv!,
+                    value: dataCalc.value!.cv ?? 0.0,
                     decimal: 2,
                     unit: 'cm'),
                 ReportTile(
                   text: 'Comprimento Total',
-                  value: dataCalc.value!.ct!,
+                  value: dataCalc.value!.ct ?? 0.0,
                   unit: 'cm',
                   decimal: 2,
                 ),

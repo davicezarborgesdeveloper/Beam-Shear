@@ -48,11 +48,15 @@ class _StirrupDetailsPageState extends State<StirrupDetailsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: const EdgeInsets.only(top: 16, bottom: 32),
                   child: Text(
                     'Comprimento dos estribos',
                     style: context.textStyles.textBold.copyWith(fontSize: 16),
                   ),
+                ),
+                const Divider(
+                  height: 32,
+                  thickness: 1,
                 ),
                 TextResultTile(
                   title: 'Comprimento horizontal',
@@ -60,12 +64,14 @@ class _StirrupDetailsPageState extends State<StirrupDetailsPage> {
                   decimal: 2,
                   unitType: 'cm',
                 ),
+                const SizedBox(height: 16),
                 TextResultTile(
                   title: 'Comprimento vertical',
                   value: dataCalc.value!.cv ?? 0.0,
                   decimal: 2,
                   unitType: 'cm',
                 ),
+                const SizedBox(height: 16),
                 TextResultTile(
                   title: 'Comprimento total',
                   value: dataCalc.value!.ct ?? 0.0,

@@ -46,28 +46,29 @@ class _BasePageState extends State<BasePage> {
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorsApp.i.primary),
+        actions: [
+          Container(
+            padding: const EdgeInsets.all(8),
+            child: Image.asset("assets/images/unb-logo.png"),
+          ),
+        ],
       ),
       drawer: const CustomDrawer(),
-      body: Stack(
-        children: [
-          PageView(
-            controller: pageController.value,
-            scrollDirection: Axis.horizontal,
-            physics: const NeverScrollableScrollPhysics(),
-            children: const [
-              SectionTypePage(),
-              TransversalSectionDataPage(),
-              WeightLoadDataPage(),
-              CharacteristicsMaterialsPage(),
-              StirrupAnglesPage(),
-              RequestinEffortPage(),
-              ServicerShearForcePage(),
-              TransverseReiforcementPage(),
-              StirrupDetailsPage(),
-              ReportPage(),
-            ],
-          ),
-          const Align(alignment: Alignment.bottomCenter, child: Logo())
+      body: PageView(
+        controller: pageController.value,
+        scrollDirection: Axis.horizontal,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          SectionTypePage(),
+          TransversalSectionDataPage(),
+          WeightLoadDataPage(),
+          CharacteristicsMaterialsPage(),
+          StirrupAnglesPage(),
+          RequestinEffortPage(),
+          ServicerShearForcePage(),
+          TransverseReiforcementPage(),
+          StirrupDetailsPage(),
+          ReportPage(),
         ],
       ),
     );

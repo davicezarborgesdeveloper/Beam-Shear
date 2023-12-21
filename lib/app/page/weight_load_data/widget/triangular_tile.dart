@@ -3,6 +3,7 @@ import 'package:beamshear/app/core/ui/helpers/enums.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/ui/helpers/constants.dart';
+import '../../../core/ui/helpers/parses.dart';
 
 class TriangularTile extends StatelessWidget {
   final List<TextEditingController> controllers;
@@ -25,7 +26,7 @@ class TriangularTile extends StatelessWidget {
             if (type == LoadType.triangular) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
@@ -40,12 +41,15 @@ class TriangularTile extends StatelessWidget {
             if (type == LoadType.triangular) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
             return null;
           },
+        ),
+        const SizedBox(
+          height: 64,
         ),
       ],
     );

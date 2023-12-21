@@ -13,7 +13,7 @@ class FrontBackButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(16),
         backgroundColor: ColorsApp.i.primary,
         foregroundColor: ColorsApp.i.primaryDark,
       ),

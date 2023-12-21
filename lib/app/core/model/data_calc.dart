@@ -60,20 +60,20 @@ class DataCalc {
     this.spacing,
   });
 
-  // factory DataCalc.mock() {
-  //   return DataCalc(
-  //     h: 0.50,
-  //     // bf: 240,
-  //     bw: 0.14,
-  //     c: 2.5,
-  //     d: 0.46,
-  //     vsk: 125,
-  //     fck: 25,
-  //     loadType: LoadType.point,
-  //     steel: SteelType.ca50,
-  //     stirrupAngle: 30,
-  //   );
-  // }
+  factory DataCalc.mock() {
+    return DataCalc(
+      h: 0.50,
+      // bf: 240,
+      bw: 0.14,
+      c: 2.5,
+      d: 0.46,
+      vsk: 125,
+      fck: 25,
+      loadType: LoadType.cortante,
+      steel: SteelType.ca50,
+      stirrupAngle: 30,
+    );
+  }
 
   DataCalc copyWith({
     double? bf,

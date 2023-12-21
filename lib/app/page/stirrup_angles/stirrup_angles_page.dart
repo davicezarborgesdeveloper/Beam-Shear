@@ -7,6 +7,7 @@ import '../../controller/drawer_controller.dart';
 import '../../core/common/bottom_page_navigator.dart';
 import '../../core/common/input_field.dart';
 import '../../core/common/top_title.dart';
+import '../../core/ui/helpers/parses.dart';
 
 class StirrupAnglesPage extends StatefulWidget {
   const StirrupAnglesPage({super.key});
@@ -23,6 +24,9 @@ class _StirrupAnglesPageState extends State<StirrupAnglesPage> {
 
   @override
   void initState() {
+    angleEC.text = dataCalc.value!.stirrupAngle != null
+        ? dataCalc.value!.stirrupAngle.toString()
+        : '';
     super.initState();
   }
 
@@ -57,7 +61,7 @@ class _StirrupAnglesPageState extends State<StirrupAnglesPage> {
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';
-                      } else if (double.parse(value) < 30 ||
+                      } else if (doubleParse(value) < 30 ||
                           double.parse(value) > 45) {
                         return 'o valor deve estar entre 30 e 45 graus';
                       }
@@ -87,7 +91,7 @@ class _StirrupAnglesPageState extends State<StirrupAnglesPage> {
                             style: context.textStyles.textRegular,
                           ),
                           Text(
-                            'O modelo II admite diagonais de compressão inclinadas de θ em relação ao eixo longitudinal do elemento estrutural, com θ variável entre 30° e 45°. Admite ainda que a parcela complementar de Vc sofra redução com o aumento de Vsd',
+                            'O modelo II admite diagonais de compressão inclinadas de θ em relação ao eixo longitudinal do elemento estrutural, com θ variável entre 30° e 45°. Admite ainda que a parcela complementar de Vc sofra redução com o aumento de Vsd.',
                             style: context.textStyles.textRegular,
                           ),
                         ]),
@@ -108,7 +112,7 @@ class _StirrupAnglesPageState extends State<StirrupAnglesPage> {
             onPressedForwad: () {
               if (_formKey.currentState!.validate()) {
                 dataCalc.value = dataCalc.value!.copyWith(
-                  stirrupAngle: double.parse(angleEC.text),
+                  stirrupAngle: doubleParse(angleEC.text),
                 );
                 FocusScope.of(context).unfocus();
                 GetIt.I<CustomDrawerController>()

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:beamshear/app/core/ui/helpers/formatters.dart';
 import 'package:flutter/material.dart';
 
 import 'package:beamshear/app/core/styles/colors_app.dart';
@@ -28,20 +29,24 @@ class _InputFieldState extends State<InputField> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
-          controller: widget.controller,
-          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-          decoration: InputDecoration(
-            label: Text(
-              widget.label!,
-              style: context.textStyles.textRegular
-                  .copyWith(color: ColorsApp.i.primary),
-            ),
-            suffix: widget.suffix,
+        controller: widget.controller,
+        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+        decoration: InputDecoration(
+          label: Text(
+            widget.label!,
+            style: context.textStyles.textRegular
+                .copyWith(color: ColorsApp.i.primary),
           ),
-          validator: widget.validator,
-          inputFormatters: [
-            FilteringTextInputFormatter.digitsOnly,
-          ]),
+          suffix: widget.suffix,
+        ),
+        validator: widget.validator,
+        inputFormatters: [
+          CommaFormatter(),
+          FilteringTextInputFormatter.allow(
+            RegExp(r'^[0-9]+[,]?[0-9]*'),
+          ),
+        ],
+      ),
     );
   }
 }

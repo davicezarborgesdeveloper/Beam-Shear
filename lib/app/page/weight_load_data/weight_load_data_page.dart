@@ -11,6 +11,7 @@ import '../../controller/data_controller.dart';
 import '../../controller/drawer_controller.dart';
 import '../../core/common/bottom_page_navigator.dart';
 import '../../core/common/top_title.dart';
+import '../../core/ui/helpers/parses.dart';
 
 class WeightLoadDataPage extends StatefulWidget {
   const WeightLoadDataPage({super.key});
@@ -30,6 +31,7 @@ class _WeightLoadDataPageState extends State<WeightLoadDataPage> {
   var dataCalc = GetIt.I<DataController>();
   @override
   void initState() {
+    dropdownValue = dataCalc.value!.loadType;
     qEC.text = dataCalc.value!.q != null ? dataCalc.value!.q.toString() : '';
     lEC.text = dataCalc.value!.l != null ? dataCalc.value!.l.toString() : '';
     xEC.text = dataCalc.value!.x != null ? dataCalc.value!.x.toString() : '';
@@ -135,16 +137,16 @@ class _WeightLoadDataPageState extends State<WeightLoadDataPage> {
               if (_formKey.currentState!.validate()) {
                 dataCalc.value = dataCalc.value!.copyWith(
                   q: dropdownValue != LoadType.cortante
-                      ? double.parse(qEC.text)
+                      ? doubleParse(qEC.text)
                       : null,
                   l: dropdownValue != LoadType.cortante
-                      ? double.parse(lEC.text)
+                      ? doubleParse(lEC.text)
                       : null,
                   x: dropdownValue == LoadType.point
-                      ? double.parse(xEC.text)
+                      ? doubleParse(xEC.text)
                       : null,
                   vsk: dropdownValue == LoadType.cortante
-                      ? double.parse(vEC.text)
+                      ? doubleParse(vEC.text)
                       : null,
                   loadType: dropdownValue,
                 );

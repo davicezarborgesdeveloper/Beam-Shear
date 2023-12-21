@@ -3,6 +3,7 @@ import 'package:beamshear/app/core/ui/helpers/enums.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/common/input_field.dart';
+import '../../../core/ui/helpers/parses.dart';
 
 class CuttingValuePage extends StatelessWidget {
   final TextEditingController controller;
@@ -24,7 +25,7 @@ class CuttingValuePage extends StatelessWidget {
             if (type == LoadType.cortante) {
               if (value.isEmpty) {
                 return 'o campo é obrigatório';
-              } else if (double.parse(value) <= 0) {
+              } else if (doubleParse(value) <= 0) {
                 return 'o valor deve ser positivo';
               }
             }
