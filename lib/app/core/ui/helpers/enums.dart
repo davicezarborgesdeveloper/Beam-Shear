@@ -48,3 +48,8 @@ enum GaugeDiameter {
     return values.firstWhere((s) => s.name == acronym);
   }
 }
+
+enum SectionType {
+  rectangular,
+  t,
+}

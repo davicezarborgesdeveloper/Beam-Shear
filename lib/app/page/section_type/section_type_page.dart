@@ -1,12 +1,27 @@
 import 'package:beamshear/app/core/styles/colors_app.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
+import '../../controller/data_controller.dart';
 import '../../core/common/logo.dart';
+import '../../core/model/data_calc.dart';
 import '../base/widget/button_selection.dart';
 
-class SectionTypePage extends StatelessWidget {
+class SectionTypePage extends StatefulWidget {
   const SectionTypePage({super.key});
+
+  @override
+  State<SectionTypePage> createState() => _SectionTypePageState();
+}
+
+class _SectionTypePageState extends State<SectionTypePage> {
+  @override
+  void initState() {
+    GetIt.I<DataController>().value = DataCalc();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

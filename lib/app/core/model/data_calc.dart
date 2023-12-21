@@ -2,6 +2,7 @@
 import 'package:beamshear/app/core/ui/helpers/enums.dart';
 
 class DataCalc {
+  late final SectionType? sectionType;
   final double? bf;
   final double? h;
   final double? bw;
@@ -31,6 +32,7 @@ class DataCalc {
   final double? spacing;
   DataCalc({
     // this.bf,
+    this.sectionType,
     this.bf,
     this.h,
     this.bw,
@@ -76,6 +78,7 @@ class DataCalc {
   }
 
   DataCalc copyWith({
+    SectionType? sectionType,
     double? bf,
     double? h,
     double? bw,
@@ -105,6 +108,7 @@ class DataCalc {
     double? spacing,
   }) {
     return DataCalc(
+      sectionType: sectionType ?? this.sectionType,
       bf: bf ?? this.bf,
       h: h ?? this.h,
       bw: bw ?? this.bw,

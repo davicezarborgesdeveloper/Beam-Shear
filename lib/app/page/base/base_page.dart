@@ -1,5 +1,4 @@
 import 'package:beamshear/app/core/common/drawer/custom_drawer.dart';
-import 'package:beamshear/app/core/common/logo.dart';
 import 'package:beamshear/app/core/styles/colors_app.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
 import 'package:beamshear/app/page/report/report_page.dart';
