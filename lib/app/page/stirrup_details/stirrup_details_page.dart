@@ -1,6 +1,7 @@
 import 'package:beamshear/app/controller/drawer_controller.dart';
 import 'package:beamshear/app/core/common/bottom_page_navigator.dart';
 import 'package:beamshear/app/core/styles/text_styles.dart';
+import 'package:beamshear/app/core/ui/helpers/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -78,6 +79,15 @@ class _StirrupDetailsPageState extends State<StirrupDetailsPage> {
                   decimal: 2,
                   unitType: 'cm',
                 ),
+                const SizedBox(height: 36),
+                dataCalc.value!.sectionType == SectionType.rectangular
+                    ? Center(
+                        child: SizedBox(
+                          height: MediaQuery.sizeOf(context).height * .45,
+                          child: Image.asset('assets/images/estribo.png'),
+                        ),
+                      )
+                    : Container()
               ],
             ),
           ),

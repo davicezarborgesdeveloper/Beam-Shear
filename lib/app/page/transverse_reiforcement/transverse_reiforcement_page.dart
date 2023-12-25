@@ -104,7 +104,7 @@ class _TransverseReiforcementPageState
                             height: 16,
                           ),
                           Text(
-                            'Adotamos o maior valor',
+                            'Adota-se o maior valor',
                             style: context.textStyles.textMedium.copyWith(
                                 fontSize: 16, color: ColorsApp.i.primary),
                           ),

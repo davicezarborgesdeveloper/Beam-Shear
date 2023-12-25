@@ -73,18 +73,18 @@ class _TransversalSectionDataPageState
                   TopTitle(
                       title: 'Dados',
                       subtitle: 'Seção Transversal',
-                      type: isRetangular ? 'H' : 'T'),
+                      type: isRetangular ? 'Retangular' : 'T'),
                   SizedBox(
                     height: 200,
                     child: Image.asset(isRetangular
-                        ? 'assets/images/square.png'
-                        : 'assets/images/t_bfw.png'),
+                        ? 'assets/images/rectangle_data.png'
+                        : 'assets/images/t_data.png'),
                   ),
                   (dataCalc.value!.sectionType != null &&
                           dataCalc.value!.sectionType == SectionType.t)
                       ? InputField(
-                          label: 'bf',
-                          suffix: const Text(Units.meters),
+                          label: 'bf (largura da mesa)',
+                          suffix: const Text(Units.cm),
                           controller: bfEC,
                           validator: (value) {
                             if (dataCalc.value!.sectionType == SectionType.t) {
@@ -99,8 +99,8 @@ class _TransversalSectionDataPageState
                         )
                       : Container(),
                   InputField(
-                    label: 'h',
-                    suffix: const Text(Units.meters),
+                    label: 'h (altura)',
+                    suffix: const Text(Units.cm),
                     controller: hEC,
                     validator: (value) {
                       if (value.isEmpty) {
@@ -110,10 +110,18 @@ class _TransversalSectionDataPageState
                       }
                       return null;
                     },
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                        double height = doubleParse(value);
+                        if (height > 0) {
+                          dEC.text = '${height * 0.9}';
+                        }
+                      }
+                    },
                   ),
                   InputField(
-                    label: 'bw',
-                    suffix: const Text(Units.meters),
+                    label: 'bw (largura)',
+                    suffix: const Text(Units.cm),
                     controller: bwEC,
                     validator: (value) {
                       if (value.isEmpty) {
@@ -125,7 +133,7 @@ class _TransversalSectionDataPageState
                     },
                   ),
                   InputField(
-                    label: 'c',
+                    label: 'c (cobrimento)',
                     suffix: const Text(Units.cm),
                     controller: cEC,
                     validator: (value) {
@@ -139,8 +147,9 @@ class _TransversalSectionDataPageState
                   ),
                   InputField(
                     label: 'd',
-                    suffix: const Text(Units.meters),
+                    suffix: const Text(Units.cm),
                     controller: dEC,
+                    editable: false,
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'o campo é obrigatório';

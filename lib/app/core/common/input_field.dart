@@ -11,8 +11,17 @@ class InputField extends StatefulWidget {
   final Widget? suffix;
   final TextEditingController? controller;
   final FormFieldValidator? validator;
-  const InputField(
-      {this.label, this.suffix, this.controller, this.validator, super.key});
+  final bool? editable;
+  final ValueChanged<String>? onChanged;
+  const InputField({
+    this.label,
+    this.suffix,
+    this.controller,
+    this.validator,
+    this.editable = true,
+    this.onChanged,
+    super.key,
+  });
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -29,6 +38,7 @@ class _InputFieldState extends State<InputField> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
+        enabled: widget.editable,
         controller: widget.controller,
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
         decoration: InputDecoration(
@@ -40,6 +50,7 @@ class _InputFieldState extends State<InputField> {
           suffix: widget.suffix,
         ),
         validator: widget.validator,
+        onChanged: widget.onChanged,
         inputFormatters: [
           CommaFormatter(),
           FilteringTextInputFormatter.allow(
