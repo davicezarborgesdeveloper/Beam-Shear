@@ -15,7 +15,7 @@ class ButtonSelection extends StatelessWidget {
     return Column(
       children: [
         ButtonTile(
-          image: 'assets/images/square.png',
+          image: 'assets/images/rectangle.png',
           title: 'Retangular',
           onTap: () {
             GetIt.I<DataController>().value = GetIt.I<DataController>()

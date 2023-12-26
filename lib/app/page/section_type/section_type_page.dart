@@ -43,7 +43,7 @@ class _SectionTypePageState extends State<SectionTypePage> {
           const ButtonSelection(),
           const Spacer(),
           Container(
-            color: Colors.grey.shade200,
+            color: Colors.white,
             child: const Logo(),
           ),
         ],

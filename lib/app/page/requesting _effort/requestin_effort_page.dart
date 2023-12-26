@@ -92,7 +92,7 @@ class _RequestinEffortPageState extends State<RequestinEffortPage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
-                    'Verificação da biela de concreto comprimido',
+                    'Verificação da biela de concreto',
                     style: context.textStyles.textBold.copyWith(fontSize: 16),
                   ),
                 ),

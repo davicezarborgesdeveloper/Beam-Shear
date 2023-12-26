@@ -15,7 +15,7 @@ class BottomPageNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: Colors.grey.shade200,
+      color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

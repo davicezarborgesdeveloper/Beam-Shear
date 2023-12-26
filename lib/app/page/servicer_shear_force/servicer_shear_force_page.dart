@@ -58,11 +58,39 @@ class _ServicerShearForcePageState extends State<ServicerShearForcePage> {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 20),
-                  child: Text(
-                    'Parcela em que o concreto consegue resistir.',
-                    style: context.textStyles.textRegular
-                        .copyWith(color: ColorsApp.i.primary),
-                  ),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Parcela resistente dos elementos da treliça:',
+                          style: context.textStyles.textRegular
+                              .copyWith(color: ColorsApp.i.primary),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Row(
+                          children: [
+                            Icon(Icons.circle, size: 8),
+                            SizedBox(width: 8),
+                            Text('Bloco de compressão'),
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Icon(Icons.circle, size: 8),
+                            SizedBox(width: 8),
+                            Text('Engrenamento dos agregados'),
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Icon(Icons.circle, size: 8),
+                            SizedBox(width: 8),
+                            Text('Efeito pino (armadura de flexão)'),
+                          ],
+                        )
+                      ]),
                 ),
               ),
               const Divider(thickness: 1),
@@ -83,7 +111,7 @@ class _ServicerShearForcePageState extends State<ServicerShearForcePage> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 20),
                   child: Text(
-                    'Valor que a armadura precisa resistir.',
+                    'Parcela resistente dos estribos.',
                     style: context.textStyles.textRegular
                         .copyWith(color: ColorsApp.i.primary),
                   ),
